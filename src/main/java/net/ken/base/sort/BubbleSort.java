@@ -18,28 +18,24 @@ public class BubbleSort extends Helper {
      * @return sorted array
      * @see <a href="https://en.wikipedia.org/wiki/Bubble_sort"></a>
      */
-    public static short[] bubbleSort(short[] arr) {
-        int top = arr.length - 1; //未排好序元素的上限
-        for (int i = 0; i < arr.length; i++) {
-            int index = 0;
-            printArr(arr, index);
-            while (index < top) {
-                if (arr[index] > arr[index + 1]) {
-                    short temp = arr[index];
-                    arr[index] = arr[index + 1];
-                    arr[index + 1] = temp;
-                    printArr(arr, index + 1);
+    public static void bubbleSort(short[] arr) {
+        int top = arr.length; //未排好序元素的上限
+        while (top > 1) {
+            for (int i = 1; i < top; i++) {
+                if (arr[i - 1] > arr[i]) {
+                    short temp = arr[i - 1];
+                    arr[i - 1] = arr[i];
+                    arr[i] = temp;
                 }
-                index++;
             }
             top--;
         }
-        return arr;
     }
 
     public static void main(String[] args) {
         System.out.println("original: ");
-        short[] arr = bubbleSort(Data.arr());
+        short[] arr = Data.arr();
+        bubbleSort(arr);
         printArr(arr);
     }
 }
